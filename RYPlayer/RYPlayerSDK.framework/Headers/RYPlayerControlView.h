@@ -60,13 +60,17 @@
 /// 返回按钮点击回调
 @property (nonatomic, copy) void(^backBtnClickCallback)(void);
 
+//截图按钮点击回调
+@property (nonatomic,copy) void(^screenShotBtnClickCallback)(UIImage *image);
+
+
 /// 控制层显示或者隐藏
 @property (nonatomic, readonly) BOOL controlViewAppeared;
 
 /// 控制层显示或者隐藏的回调
 @property (nonatomic, copy) void(^controlViewAppearedCallback)(BOOL appeared);
 
-/// 控制层自动隐藏的时间，默认2.5秒
+/// 控制层自动隐藏的时间，默认10秒
 @property (nonatomic, assign) NSTimeInterval autoHiddenTimeInterval;
 
 /// 控制层显示、隐藏动画的时长，默认0.25秒
