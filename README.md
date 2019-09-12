@@ -43,8 +43,8 @@ libresolve.9.tbd<br>
 	//添加播放器视图
 	[self.view addSubview:self.containerView];
         //播放器管理器
-        NSObject<RYPlayerMediaPlayback> *playerManager;
-        //选择播放器类型
+	NSObject<RYPlayerMediaPlayback> *playerManager;
+	//选择播放器类型
     	int type;
         if(self.type == 0)
     	{
@@ -65,12 +65,12 @@ libresolve.9.tbd<br>
 		//全景VR点播
 		playerManager = [[RYVRPlayerManager alloc]init];
     	}
-   		 // 播放器初始化
-   	 	self.player = [RYPlayerController playerWithPlayerManager:playerManager containerView:self.containerView];
-   	 	//设置不同分辨率播放地址
-   	 	self.player.assetURLs = self.assetURLs;
-   		 //开始播放
-    		[self.player playTheIndex:0]; 
+	 // 播放器初始化
+	self.player = [RYPlayerController playerWithPlayerManager:playerManager containerView:self.containerView];
+	//设置不同分辨率播放地址
+	self.player.assetURLs = self.assetURLs;
+	 //开始播放
+	[self.player playTheIndex:0]; 
    	 }
     	@end
 
@@ -120,30 +120,30 @@ Self.player.assetURLs = URLSArr; <br>
 13.播放器索引时间点<br>
 [self.player seekToTime:time completionHandler:^(BOOL finished) {   }];<br>
 
-播放器回调接口
-1.播放器准备播放
- self.player.playerPrepareToPlay = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSURL * _Nonnull assetURL) {  };
+播放器回调接口<br>
+1.播放器准备播放<br>
+ self.player.playerPrepareToPlay = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSURL * _Nonnull assetURL) {  };<br>
 
-2.播放器准备好播放
- self.player.playerReadyToPlay = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSURL * _Nonnull assetURL) {  };
+2.播放器准备好播放<br>
+ self.player.playerReadyToPlay = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSURL * _Nonnull assetURL) {  };<br>
 
-3.播放器播放播放时间回调
-self.player.playerPlayTimeChanged = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSTimeInterval currentTime, NSTimeInterval duration){   };
+3.播放器播放播放时间回调<br>
+self.player.playerPlayTimeChanged = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSTimeInterval currentTime, NSTimeInterval duration){   };<br>
 
-4.播放器缓冲时间回调
-self.playe.playerBufferTimeChanged = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSTimeInterval bufferTime) {   };
+4.播放器缓冲时间回调<br>
+self.playe.playerBufferTimeChanged = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSTimeInterval bufferTime) {   };<br>
 
-5.播放器播放状态回调
-self.player.playerPlayStateChanged = = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, RYPlayerPlaybackState playState) {   };
+5.播放器播放状态回调<br>
+self.player.playerPlayStateChanged = = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, RYPlayerPlaybackState playState) {   };<br>
 
-6.播放器加载状态回调
-self.player.playerLoadStateChanged = = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, RYPlayerLoadState loadState) {   };
+6.播放器加载状态回调<br>
+self.player.playerLoadStateChanged = = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, RYPlayerLoadState loadState) {   };<br>
 
-7.播放器播放失败回调
-self.player.playerPlayFailed = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, id _Nonnull error) {   };
+7.播放器播放失败回调<br>
+self.player.playerPlayFailed = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, id _Nonnull error) {   };<br>
 
-8.播放器播放完毕回调
-self.player.playerDidToEnd = ^(id<RYPlayerMediaPlayback>  _Nonnull asset) {   };
+8.播放器播放完毕回调<br>
+self.player.playerDidToEnd = ^(id<RYPlayerMediaPlayback>  _Nonnull asset) {   };<br>
 
 
 
