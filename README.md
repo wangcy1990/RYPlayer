@@ -36,15 +36,14 @@ libresolve.9.tbd<br>
 引用RYPlayerSDK<br>
 #import <RYPlayerSDK/RYPlayerSDK.h> <br>
 
-@implementation ViewController
-
--(void)viewDidLoad 
-{
-    [super viewDidLoad];
-    //添加播放器视图
-    [self.view addSubview:self.containerView];
-    //播放器管理器
-    NSObject<RYPlayerMediaPlayback> *playerManager;
+	@implementation ViewController
+	-(void)viewDidLoad 
+	{
+	[super viewDidLoad];
+	//添加播放器视图
+	[self.view addSubview:self.containerView];
+    	//播放器管理器
+    	NSObject<RYPlayerMediaPlayback> *playerManager;
     //选择播放器类型
     int type;
     if(self.type == 0)
@@ -57,26 +56,23 @@ libresolve.9.tbd<br>
     {
         //点播
         playerManager = [[RYAVPlayerManager alloc]init];
-	
     }else if(self.type == 2)
     {
         //全景VR直播
         playerManager = [[RYVRPlayerManager alloc]initWithDecoderType:2];
-
     }else if (self.type == 3)
     {
         //全景VR点播
         playerManager = [[RYVRPlayerManager alloc]init];
     }
-   // 播放器初始化
+    // 播放器初始化
     self.player = [RYPlayerController playerWithPlayerManager:playerManager containerView:self.containerView];
-   //设置不同分辨率播放地址
+    //设置不同分辨率播放地址
     self.player.assetURLs = self.assetURLs;
-	//开始播放
+    //开始播放
     [self.player playTheIndex:0]; 
-}
-
-@end
+    }
+    @end
 
 定制化开发接口说明
 1.使用播放器自带UI（如需自定义开发UI,不调用此接口）
