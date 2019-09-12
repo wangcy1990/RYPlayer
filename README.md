@@ -31,8 +31,53 @@ libresolve.9.tbd<br>
 
 .播放器使用大观云平台统计播放数据，需要在plist中添加App Transport Security Settings，并设置Allow Arbitrary Loads为YES<br>
 
-播放器的使用：<br>
+播放器的使用：
+======
 引用RYPlayerSDK<br>
+#import <RYPlayerSDK/RYPlayerSDK.h> <br>
+
+@implementation ViewController
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    //添加播放器视图
+    [self.view addSubview:self.containerView];
+    //播放器管理器
+    NSObject<RYPlayerMediaPlayback> *playerManager;
+    //选择播放器类型
+    int type;
+    if(self.type == 0)
+    {
+        //直播
+        playerManager = [[RYIJKPlayerManager alloc] init];
+        //软解/硬解码
+        //[playerManager setGPUCodeMode:NO];
+    }else if (self.type == 1)
+    {
+        //点播
+        playerManager = [[RYAVPlayerManager alloc]init];
+        
+    }else if(self.type == 2)
+    {
+        //全景VR直播
+        playerManager = [[RYVRPlayerManager alloc]initWithDecoderType:2];
+
+    }else if (self.type == 3)
+    {
+        //全景VR点播
+        playerManager = [[RYVRPlayerManager alloc]init];
+    }
+   // 播放器初始化
+    self.player = [RYPlayerController playerWithPlayerManager:playerManager containerView:self.containerView];
+   //设置不同分辨率播放地址
+    self.player.assetURLs = self.assetURLs;
+	//开始播放
+    [self.player playTheIndex:0]; 
+}
+
+@end
+
+
+
 
 
 
