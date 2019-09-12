@@ -42,81 +42,83 @@ libresolve.9.tbd<br>
 	[super viewDidLoad];
 	//添加播放器视图
 	[self.view addSubview:self.containerView];
-    	//播放器管理器
-    	NSObject<RYPlayerMediaPlayback> *playerManager;
-    //选择播放器类型
-    int type;
-    if(self.type == 0)
-    {
-        //直播
-        playerManager = [[RYIJKPlayerManager alloc] init];
-        //软解/硬解码
-        //[playerManager setGPUCodeMode:NO];
-    }else if (self.type == 1)
-    {
-        //点播
-        playerManager = [[RYAVPlayerManager alloc]init];
-    }else if(self.type == 2)
-    {
-        //全景VR直播
-        playerManager = [[RYVRPlayerManager alloc]initWithDecoderType:2];
-    }else if (self.type == 3)
-    {
-        //全景VR点播
-        playerManager = [[RYVRPlayerManager alloc]init];
-    }
-    // 播放器初始化
-    self.player = [RYPlayerController playerWithPlayerManager:playerManager containerView:self.containerView];
-    //设置不同分辨率播放地址
-    self.player.assetURLs = self.assetURLs;
-    //开始播放
-    [self.player playTheIndex:0]; 
-    }
-    @end
+        //播放器管理器
+        NSObject<RYPlayerMediaPlayback> *playerManager;
+        //选择播放器类型
+    	int type;
+        if(self.type == 0)
+    	{
+		//直播
+		playerManager = [[RYIJKPlayerManager alloc] init];
+		//软解/硬解码
+		//[playerManager setGPUCodeMode:NO];
+    	}else if (self.type == 1)
+    	{
+		//点播
+		playerManager = [[RYAVPlayerManager alloc]init];
+    	}else if(self.type == 2)
+    	{
+		//全景VR直播
+		playerManager = [[RYVRPlayerManager alloc]initWithDecoderType:2];
+    	}else if (self.type == 3)
+    	{
+		//全景VR点播
+		playerManager = [[RYVRPlayerManager alloc]init];
+    	}
+   		 // 播放器初始化
+   	 	self.player = [RYPlayerController playerWithPlayerManager:playerManager containerView:self.containerView];
+   	 	//设置不同分辨率播放地址
+   	 	self.player.assetURLs = self.assetURLs;
+   		 //开始播放
+    		[self.player playTheIndex:0]; 
+   	 }
+    	@end
 
 定制化开发接口说明
-1.使用播放器自带UI（如需自定义开发UI,不调用此接口）
-self.controlView = [RYPlayerControlView new];
-self.player.controlView = self.controlView;
-//设置不同分辨率显示名称
-[self.controlView setDefaultUIWithURLNames:URLNamesArr];
+=
 
-2.设置画面填充模式(VR播放器暂不支持)
-playerManager.scalingMode = RYPlayerScalingModeAspectFit;
+1.使用播放器自带UI（如需自定义开发UI,不调用此接口）<br>
+self.controlView = [RYPlayerControlView new];<br>
+self.player.controlView = self.controlView;<br>
+//设置不同分辨率显示名称<br>
+[self.controlView setDefaultUIWithURLNames:URLNamesArr];<br>
 
-3.倍速播放（0.5～2倍）
-playerManager.rate = 1;
+2.设置画面填充模式(VR播放器暂不支持)<br>
+playerManager.scalingMode = RYPlayerScalingModeAspectFit;<br>
 
-4.播放器自动播放
-playerManager.shouldAutoPlay = YES;
+3.倍速播放（0.5～2倍）<br>
+playerManager.rate = 1;<br>
 
-5.支持后台播放
-(需要打开Background Modes并勾选Audio,airplay,andPciture in Picture)
-self.player.pauseWhenAppResignActive = YES;
+4.播放器自动播放<br>
+playerManager.shouldAutoPlay = YES;<br>
 
-6.暂停播放
-[self.player.currentPlayerManager pause];
+5.支持后台播放<br>
+(需要打开Background Modes并勾选Audio,airplay,andPciture in Picture)<br>
+self.player.pauseWhenAppResignActive = YES;<br>
 
-7.恢复播放
-[self.player.currentPlayerManager play];
+6.暂停播放<br>
+[self.player.currentPlayerManager pause];<br>
 
-8.切换不同分辨率
-[self.player playTheIndex:x];
+7.恢复播放<br>
+[self.player.currentPlayerManager play];<br>
 
-9.切换不同视频
-Self.player.assetURLs = URLSArr; 
+8.切换不同分辨率<br>
+[self.player playTheIndex:x];<br>
 
-10.播放器静音
-[self.player.currentPlayerManager setMuted:YES];
+9.切换不同视频<br>
+Self.player.assetURLs = URLSArr; <br>
 
-11.截图(VR暂不支持截图功能)
-[self.player.currentPlayerManager thumbnailImageAtCurrentTime];
+10.播放器静音<br>
+[self.player.currentPlayerManager setMuted:YES];<br>
 
-12.销毁播放器
-[self.player stop]; 
+11.截图(VR暂不支持截图功能)<br>
+[self.player.currentPlayerManager thumbnailImageAtCurrentTime];<br>
 
-13.播放器索引时间点
-[self.player seekToTime:time completionHandler:^(BOOL finished) {   }];
+12.销毁播放器<br>
+[self.player stop]; <br>
+
+13.播放器索引时间点<br>
+[self.player seekToTime:time completionHandler:^(BOOL finished) {   }];<br>
 
 播放器回调接口
 1.播放器准备播放
