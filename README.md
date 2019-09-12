@@ -21,3 +21,16 @@ libc++.tbd、
 libxml2.tbd、
 libresolve.9.tbd
 
+.在Embed Frameworks中添加RYPlayerSDK.framework
+
+.在Build Settings中找到Other Linker Flags ，添加 -ObjC
+
+.如需支持后台播放，需要打开Background Modes并勾选Audio,airplay,andPciture in Picture
+
+.播放器使用大观云平台统计播放数据，需要在plist中添加App Transport Security Settings，并设置Allow Arbitrary Loads为YES
+
+播放器的使用：
+引用RYPlayerSDK
+
+
+
