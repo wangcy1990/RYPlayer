@@ -1,4 +1,4 @@
-大洋融云播放器 -- RYPlayerSDK
+大洋融云IOS播放器 -- RYPlayerSDK
 ====
 基于ijkplayer开发，集点播、直播、VR播放功能于一体，与融云云平台绑定，支持播放数据统计。
 
