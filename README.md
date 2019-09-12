@@ -37,7 +37,9 @@ libresolve.9.tbd<br>
 #import <RYPlayerSDK/RYPlayerSDK.h> <br>
 
 @implementation ViewController
--(void)viewDidLoad {
+
+-(void)viewDidLoad 
+{
     [super viewDidLoad];
     //添加播放器视图
     [self.view addSubview:self.containerView];
@@ -55,7 +57,7 @@ libresolve.9.tbd<br>
     {
         //点播
         playerManager = [[RYAVPlayerManager alloc]init];
-        
+	
     }else if(self.type == 2)
     {
         //全景VR直播
@@ -76,6 +78,74 @@ libresolve.9.tbd<br>
 
 @end
 
+定制化开发接口说明
+1.使用播放器自带UI（如需自定义开发UI,不调用此接口）
+self.controlView = [RYPlayerControlView new];
+self.player.controlView = self.controlView;
+//设置不同分辨率显示名称
+[self.controlView setDefaultUIWithURLNames:URLNamesArr];
+
+2.设置画面填充模式(VR播放器暂不支持)
+playerManager.scalingMode = RYPlayerScalingModeAspectFit;
+
+3.倍速播放（0.5～2倍）
+playerManager.rate = 1;
+
+4.播放器自动播放
+playerManager.shouldAutoPlay = YES;
+
+5.支持后台播放
+(需要打开Background Modes并勾选Audio,airplay,andPciture in Picture)
+self.player.pauseWhenAppResignActive = YES;
+
+6.暂停播放
+[self.player.currentPlayerManager pause];
+
+7.恢复播放
+[self.player.currentPlayerManager play];
+
+8.切换不同分辨率
+[self.player playTheIndex:x];
+
+9.切换不同视频
+Self.player.assetURLs = URLSArr; 
+
+10.播放器静音
+[self.player.currentPlayerManager setMuted:YES];
+
+11.截图(VR暂不支持截图功能)
+[self.player.currentPlayerManager thumbnailImageAtCurrentTime];
+
+12.销毁播放器
+[self.player stop]; 
+
+13.播放器索引时间点
+[self.player seekToTime:time completionHandler:^(BOOL finished) {   }];
+
+播放器回调接口
+1.播放器准备播放
+ self.player.playerPrepareToPlay = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSURL * _Nonnull assetURL) {  };
+
+2.播放器准备好播放
+ self.player.playerReadyToPlay = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSURL * _Nonnull assetURL) {  };
+
+3.播放器播放播放时间回调
+self.player.playerPlayTimeChanged = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSTimeInterval currentTime, NSTimeInterval duration){   };
+
+4.播放器缓冲时间回调
+self.playe.playerBufferTimeChanged = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSTimeInterval bufferTime) {   };
+
+5.播放器播放状态回调
+self.player.playerPlayStateChanged = = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, RYPlayerPlaybackState playState) {   };
+
+6.播放器加载状态回调
+self.player.playerLoadStateChanged = = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, RYPlayerLoadState loadState) {   };
+
+7.播放器播放失败回调
+self.player.playerPlayFailed = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, id _Nonnull error) {   };
+
+8.播放器播放完毕回调
+self.player.playerDidToEnd = ^(id<RYPlayerMediaPlayback>  _Nonnull asset) {   };
 
 
 
