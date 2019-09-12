@@ -11,7 +11,7 @@ pod 'RYPlayer'<br>
 2.手动集成<br>
 下载RYPlayerSDK、IJKMediaFramework.framework;<br>
 将RYPlayerSDK.framework和IJKMediaFramework.framework复制到项目中；<br>
-.添加依赖库：<br>
+* 添加依赖库：<br>
 在Build Phases中的Link Bainary With Libraries中添加：<br>
 RYPlayerSDK.framework、<br>
 IJKMediaFramework.framework、<br>
@@ -23,13 +23,13 @@ libc++.tbd、<br>
 libxml2.tbd、<br>
 libresolve.9.tbd<br>
 
-.在Embed Frameworks中添加RYPlayerSDK.framework<br>
+* 在Embed Frameworks中添加RYPlayerSDK.framework<br>
 
-.在Build Settings中找到Other Linker Flags ，添加 -ObjC<br>
+* 在Build Settings中找到Other Linker Flags ，添加 -ObjC<br>
 
-.如需支持后台播放，需要打开Background Modes并勾选Audio,airplay,andPciture in Picture<br>
+* 如需支持后台播放，需要打开Background Modes并勾选Audio,airplay,andPciture in Picture<br>
 
-.播放器使用大观云平台统计播放数据，需要在plist中添加App Transport Security Settings，并设置Allow Arbitrary Loads为YES<br>
+* 播放器使用大观云平台统计播放数据，需要在plist中添加App Transport Security Settings，并设置Allow Arbitrary Loads为YES<br>
 
 播放器的使用：
 ======
