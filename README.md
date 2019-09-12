@@ -121,6 +121,7 @@ Self.player.assetURLs = URLSArr; <br>
 [self.player seekToTime:time completionHandler:^(BOOL finished) {   }];<br>
 
 播放器回调接口<br>
+------
 1.播放器准备播放<br>
  self.player.playerPrepareToPlay = ^(id<RYPlayerMediaPlayback>  _Nonnull asset, NSURL * _Nonnull assetURL) {  };<br>
 
