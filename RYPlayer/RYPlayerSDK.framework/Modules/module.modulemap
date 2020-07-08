@@ -1,6 +1,0 @@
-framework module RYPlayerSDK {
-  umbrella header "RYPlayerSDK.h"
-
-  export *
-  module * { export * }
-}
