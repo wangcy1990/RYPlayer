@@ -118,8 +118,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  # s.framework  = "SomeFramework"
-  # s.frameworks = "Libiconv.tbd", "libsqlite3.tbd","libz.tbd","libz2.tbd","libc++.tbd","libxml2.tbd","libresolve.9.tbd"
+  #  s.frameworks = "Libiconv.tbd", "libsqlite3.tbd","libz.tbd","libz2.tbd","libc++.tbd","libxml2.tbd","libresolve.9.tbd"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
